@@ -6,7 +6,7 @@ module.exports.createUser = async (req, res, next) => {
   try {
     const { body } = req;
     const newUser = await User.create(body);
-    if (!newuser) {
+    if (!newUser) {
       return next(createError(400, 'Bad request'));
     }
     const user = newUser.get();
@@ -55,7 +55,7 @@ module.exports.getUserByPk = async (req, res, next) => {
     userInstance.dataValues.taskCount = taskCount;
     res.status(200).send({ data: userInstance});
   } catch (error) {
-    next(error);
+    next(createError(404, 'User not found'));
   }
 };
 
