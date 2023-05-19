@@ -3,12 +3,13 @@ import countReducer from './countSlice';
 import todoReducer from './todoSlice';
 import usersReducer from './usersSlice';
 import groupSlice from './groupSlice';
-
+import tasksSlice from './taskSlice';
 const rootReducer = combineReducers({
   counter: countReducer,
   todo: todoReducer,
   users: usersReducer,
   groups: groupSlice,
+  tasks: tasksSlice
 });
 
 export default rootReducer;

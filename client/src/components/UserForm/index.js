@@ -1,21 +1,15 @@
 import React from 'react';
 import { Field, Form, Formik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
-import { createUser } from '../../store/usersSlice';
-
-const UserForm = () => {
+import { useSelector } from 'react-redux';
+import styles from './UserForm.module.sass';
+const UserForm = (props) => {
   const { isFetching, error } = useSelector((state) => state.users);
-  const dispatch = useDispatch();
-  const onSubmit = (values, formikBag) => {
-    //
-    dispatch(createUser(values));
-    //
-  };
+  const { onSubmit, action } = props;
   return (
     <>
       {isFetching && <p>Loading</p>}
       {error && <h2>{error}</h2>}
-      <Formik
+      <Formik 
         initialValues={{
           firstName: '',
           lastName: '',
@@ -26,14 +20,25 @@ const UserForm = () => {
         }}
         onSubmit={onSubmit}
       >
-        <Form>
-          <Field name="firstName" placeholder="firstName" />
-          <Field name="lastName" placeholder="lastName" />
-          <Field name="email" placeholder="email" />
-          <Field name="password" placeholder="password" />
-          <Field name="birthday" placeholder="birthday" />
-          <Field name="isMale" type="checkbox" />
-          <input type="submit" value="add new user" />
+        <Form className={styles.form}>
+          <Field name="firstName" placeholder="First name" />
+          <Field name="lastName" placeholder="Last name" />
+          <Field name="email" placeholder="Email" />
+          <Field type="password" name="password" placeholder="Password" />
+          <Field name="birthday" placeholder="Birthday" />
+          <Field
+            name="isMale"
+            type="checkbox"
+            children={() => {
+              return (
+                <label>
+                  <input type="checkbox" />
+                  male
+                </label>
+              );
+            }}
+          />
+          <input type="submit" value={`${action} user`} />
         </Form>
       </Formik>
     </>

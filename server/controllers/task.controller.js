@@ -23,7 +23,6 @@ module.exports.createTask = async (req, res, next) => {
     if (countTask >= 5) {
       return next(new LimitTasksError('tasks must be less than 5'));
     }
-
     const task = await userInstance.createTask(body);
     res.status(201).send({ data: task });
   } catch (error) {

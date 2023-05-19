@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { createGroup } from '../../store/groupSlice';
-
+import styles from './GroupForm.module.sass'
 const GroupForm = () => {
   const dispatch = useDispatch();
   const onSubmit = (values, formikBag) => {
@@ -21,7 +21,7 @@ const GroupForm = () => {
     >
       {(formikProps) => {
         return (
-          <Form encType="multipart/form-data">
+          <Form encType="multipart/form-data" className={styles.form}>
             <Field name="title" placeholder="title" />
             <input
               name="image"

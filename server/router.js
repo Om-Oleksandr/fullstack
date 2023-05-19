@@ -26,6 +26,4 @@ router.get('/users/:idUser/tasks/:idTask', checkUser, checkTask, isUserTask, Tas
 
 router.get('/tasks/:idTask', checkTask, TaskController.getTask);
 
-
-
 module.exports = router;

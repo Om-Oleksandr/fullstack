@@ -23,14 +23,6 @@ module.exports.getAllUsers = async (req, res, next) => {
     const users = await User.findAll({
       attributes: { exclude: ['password', 'createdAt', 'updatedAt'] },
       ...pagination,
-      // order: [['email', 'DESC']],
-      // limit: 2
-      // attributes: ['id', 'email', ['is_male', 'newIsMale']]
-      // where: {
-      //   id: {
-      //     [Op.eq]: 3
-      //   }
-      // }
     });
     if (users.length === 0) {
       return next(createError(404, 'Users not found'));
@@ -44,13 +36,8 @@ module.exports.getAllUsers = async (req, res, next) => {
 module.exports.getUserByPk = async (req, res, next) => {
   try {
     const {
-      // params: { idUser },
       userInstance,
     } = req;
-    // const user = await User.findByPk(idUser, {
-    //   attributes: { exclude: ['password'] },
-    // });
-    // user.password = undefined;
     const taskCount = await userInstance.countTasks();
     userInstance.dataValues.taskCount = taskCount;
     res.status(200).send({ data: userInstance});
@@ -79,7 +66,6 @@ module.exports.updateUserStatic = async (req, res, next) => {
 module.exports.updateUserInstance = async (req, res, next) => {
   try {
     const { body, userInstance } = req;
-    // const userInstance = await User.findByPk(idUser);
     const updatedUser = await userInstance.update(body, {
       returning: true,
     });

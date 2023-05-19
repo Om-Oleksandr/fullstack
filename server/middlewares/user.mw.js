@@ -18,8 +18,10 @@ module.exports.checkUser = async (req, res, next) => {
     }
     user.password = undefined;
     req.userInstance = user;
+    console.log(idUser);
     next();
   } catch (error) {
     next(error);
   }
 };
+

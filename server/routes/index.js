@@ -9,7 +9,6 @@ router.use('/users', userRouter);
 
 router.use('/users/:idUser/tasks', checkUser, taskRouter);
 
-
 router.use('/groups', groupRouter);
 
 module.exports = router;

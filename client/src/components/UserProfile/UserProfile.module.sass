@@ -1,0 +1,12 @@
+@import '../../common/templates'
+.container
+    @extend %container
+    .group_tasks
+        width: 100%
+        display: flex
+        & h2:first-letter
+            text-transform: uppercase
+        & > *
+            flex: 0 0 50%
+            & ol li
+                padding: 0.5rem 0

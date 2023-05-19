@@ -1,0 +1,24 @@
+@import '../../common/templates'
+.container
+    @extend %container
+    display: flex
+    justify-content: space-between
+    .form
+        width: 40%
+        height: 50vh
+        overflow: auto
+        opacity: 0
+        visibility: hidden
+        & > form
+            display: flex
+            align-items: flex-start
+            flex-direction: row-reverse
+            justify-content: space-between
+            .submit
+                position: sticky
+                top: 0
+            & div
+                width: fit-content
+    .show_form
+        opacity: 1
+        visibility: visible

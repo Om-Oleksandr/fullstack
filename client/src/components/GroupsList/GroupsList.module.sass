@@ -1,0 +1,14 @@
+@import '../../common/templates'
+.container
+    @extend %container
+    & h2:first-letter
+        text-transform: uppercase
+    & ol li
+        display: flex
+        column-gap: 0.7rem
+        padding: 0.5rem 0
+        & a
+            text-decoration: none
+            color: #000
+        & a:first-letter
+            text-transform: uppercase
