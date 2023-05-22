@@ -1,6 +1,6 @@
 'use strict';
 
-const generateUser = (key) => ({
+const generateUser = key => ({
   first_name: `Name${key}`,
   last_name: `Last name${key}`,
   email: `Name${key}@gmail.com`,
@@ -17,11 +17,11 @@ const usersGenerate = (amount = 50) => {
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     await queryInterface.bulkInsert('users', usersGenerate(100), {});
   },
 
-  async down(queryInterface, Sequelize) {
+  async down (queryInterface, Sequelize) {
     await queryInterface.bulkDelete('users', null, {});
   },
 };

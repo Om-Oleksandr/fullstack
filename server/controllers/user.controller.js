@@ -35,12 +35,10 @@ module.exports.getAllUsers = async (req, res, next) => {
 
 module.exports.getUserByPk = async (req, res, next) => {
   try {
-    const {
-      userInstance,
-    } = req;
+    const { userInstance } = req;
     const taskCount = await userInstance.countTasks();
     userInstance.dataValues.taskCount = taskCount;
-    res.status(200).send({ data: userInstance});
+    res.status(200).send({ data: userInstance });
   } catch (error) {
     next(createError(404, 'User not found'));
   }

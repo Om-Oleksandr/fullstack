@@ -3,7 +3,8 @@ const multer = require('multer');
 const { Group, User } = require('../models');
 const createError = require('http-errors');
 
-const pickBody = (body) => _.pick(body, ['title', 'description', 'imagePath', 'isPrivate']);
+const pickBody = body =>
+  _.pick(body, ['title', 'description', 'imagePath', 'isPrivate']);
 
 module.exports.createGroup = async (req, res, next) => {
   try {
@@ -121,13 +122,13 @@ module.exports.addUserAtGroup = async (req, res, next) => {
       body: { userId },
     } = req;
     const users = await Promise.all(
-      userId.map(async (id) => {
+      userId.map(async id => {
         const user = await User.findByPk(id, {
           attributes: {
             exclude: ['password'],
           },
         });
-        return user
+        return user;
       })
     );
     console.log(users);
@@ -202,7 +203,10 @@ module.exports.deleteGroup = async (req, res, next) => {
     const {
       params: { idGroup },
     } = req;
-    const deletedGroup = await Group.destroy({ where: { id: idGroup }, returning: true });
+    const deletedGroup = await Group.destroy({
+      where: { id: idGroup },
+      returning: true,
+    });
     res.status(200).send({ data: deletedGroup });
   } catch (error) {
     next(error);

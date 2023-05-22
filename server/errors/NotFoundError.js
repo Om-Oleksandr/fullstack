@@ -1,7 +1,7 @@
 const ApplicationError = require('./ApplicationError');
 
 class NotFoundError extends ApplicationError {
-  constructor(message) {
+  constructor (message) {
     super(404, message || 'data not found');
   }
 }

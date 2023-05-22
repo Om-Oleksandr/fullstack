@@ -1,6 +1,7 @@
 .*
 !.gitignore
-!.sequelize
+!.sequelizerc
+!.prettierrc*
 /requests/
 /node_modules/
 /public/

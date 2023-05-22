@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate (models) {
       Task.belongsTo(models.User, {
         foreignKey: 'userId',
       });
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         validate: {
           isDate: true,
-          isValidDate(value) {
+          isValidDate (value) {
             if (isAfter(new Date(), new Date(value))) {
               throw new Error('check deadLine');
             }

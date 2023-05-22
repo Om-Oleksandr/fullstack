@@ -14,11 +14,18 @@ groupRouter.get('/:idGroup/users', GroupController.getGroupUsers);
 
 groupRouter.patch('/:idGroup/:idUser/add', GroupController.addUserAtGroup);
 
-groupRouter.put('/:idGroup', upload.single('image'), GroupController.updateGroup);
+groupRouter.put(
+  '/:idGroup',
+  upload.single('image'),
+  GroupController.updateGroup
+);
 
 groupRouter.delete('/:idGroup', GroupController.deleteGroup);
 
-groupRouter.patch('/:idGroup/:idUser/remove', GroupController.deleteUserFromGroup);
+groupRouter.patch(
+  '/:idGroup/:idUser/remove',
+  GroupController.deleteUserFromGroup
+);
 
 groupRouter.get('/:idGroup', GroupController.countUsers);
 groupRouter.patch('/:idGroup/image', GroupController.addImage);

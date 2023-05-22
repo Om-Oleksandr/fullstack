@@ -19,10 +19,7 @@ module.exports.checkTask = async (req, res, next) => {
 
 module.exports.isUserTask = async (req, res, next) => {
   try {
-    const {
-      userInstance,
-      taskInstance,
-    } = req;
+    const { userInstance, taskInstance } = req;
     const checkHas = await userInstance.hasTask(taskInstance);
     console.log('checkHas = ', checkHas);
     if (!checkHas) {

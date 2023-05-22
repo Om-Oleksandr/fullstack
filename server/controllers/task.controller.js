@@ -19,7 +19,7 @@ module.exports.createTask = async (req, res, next) => {
     const { userInstance, body } = req;
 
     const countTask = await userInstance.countTasks();
-    
+
     if (countTask >= 5) {
       return next(new LimitTasksError('tasks must be less than 5'));
     }

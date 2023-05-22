@@ -3,7 +3,7 @@ const { Model } = require('sequelize');
 const { isAfter } = require('date-fns');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate(models) {
+    static associate (models) {
       User.hasMany(models.Task, {
         foreignKey: 'userId',
       });
@@ -49,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
           notNull: true,
           notEmpty: true,
         },
-        set(value) {
+        set (value) {
           this.setDataValue('password', 'hash');
         },
       },
@@ -58,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATEONLY,
         validate: {
           isDate: true,
-          isValidDate(value) {
+          isValidDate (value) {
             if (isAfter(new Date(value), new Date())) {
               throw new Error('check birthday');
             }

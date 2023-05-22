@@ -5,7 +5,8 @@ const storage = multer.diskStorage({
     cb(null, path.resolve(__dirname, '../public/images'));
   },
   filename: function (req, file, cb) {
-    const uniquePreffix = Date.now() + '-' + Math.round(Math.random() * 100) + '-';
+    const uniquePreffix =
+      Date.now() + '-' + Math.round(Math.random() * 100) + '-';
     cb(null, uniquePreffix + file.originalname);
   },
 });

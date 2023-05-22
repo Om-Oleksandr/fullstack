@@ -4,7 +4,10 @@ const { checkTask, isUserTask } = require('../middlewares/task.mw');
 const { paginate } = require('../middlewares/paginate.mw');
 const taskRouter = Router();
 
-taskRouter.route('/').post(TaskController.createTask).get(paginate, TaskController.getUserTasks);
+taskRouter
+  .route('/')
+  .post(TaskController.createTask)
+  .get(paginate, TaskController.getUserTasks);
 
 taskRouter
   .route('/:idTask')
